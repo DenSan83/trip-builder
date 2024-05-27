@@ -21,6 +21,8 @@ return new class extends Migration
             $table->time('arrival_time');
             $table->decimal('price', 8, 2);
             $table->timestamps();
+
+            $table->unique(['airline', 'number']);
         });
     }
 
