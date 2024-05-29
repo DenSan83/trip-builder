@@ -34,6 +34,17 @@ class FlightController extends Controller
         return $flight;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/flights",
+     *     summary="Fetch list of flights",
+     *     description="Endpoint to fetch the list of flights",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *      )
+     * )
+     */
     public function fetchList(Request $request)
     {
         $airline = $request->query('airline');

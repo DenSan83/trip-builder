@@ -18,6 +18,17 @@ class AirportController extends Controller
         return implode(', ', $doesntExist);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/airports",
+     *     summary="Fetch list of airports",
+     *     description="Endpoint to fetch the list of airports",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *      )
+     * )
+     */
     public function fetchList()
     {
         $airports = Airport::select(

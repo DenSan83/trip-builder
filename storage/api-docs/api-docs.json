@@ -1,0 +1,215 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Trip Builder",
+        "description": "Documentation of the API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/airlines": {
+            "get": {
+                "summary": "Fetch list of airlines",
+                "description": "Endpoint to fetch the list of airlines",
+                "operationId": "cf483a3ad643b6c348af07679cc4fc7e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/airports": {
+            "get": {
+                "summary": "Fetch list of airports",
+                "description": "Endpoint to fetch the list of airports",
+                "operationId": "3ac63f06dcaa68efa826177ba420d503",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/flights": {
+            "get": {
+                "summary": "Fetch list of flights",
+                "description": "Endpoint to fetch the list of flights",
+                "operationId": "b87b1011def452265161b49568fd7995",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/search": {
+            "get": {
+                "summary": "Search trips",
+                "description": "Endpoint to search for trips. If a date parameter for an additional segment (e.g., seg2_date) is provided, all parameters for that segment (seg2_date, seg2_from, seg2_to) are required.",
+                "operationId": "e1f724aba82744e09b04fe327f35b0ef",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type of trip",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "oneway",
+                                "roundtrip",
+                                "multicity",
+                                "openjaws"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "seg0_date",
+                        "in": "query",
+                        "description": "Date of departure for the first segment",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "seg0_from",
+                        "in": "query",
+                        "description": "Departure airport code for the first segment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg0_to",
+                        "in": "query",
+                        "description": "Arrival airport code for the first segment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg1_date",
+                        "in": "query",
+                        "description": "Date of departure for the second segment",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "seg1_from",
+                        "in": "query",
+                        "description": "Departure airport code for the second segment",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg1_to",
+                        "in": "query",
+                        "description": "Arrival airport code for the second segment",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg2_date",
+                        "in": "query",
+                        "description": "Date of departure for the third segment (required if seg2_from or seg2_to are provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "seg2_from",
+                        "in": "query",
+                        "description": "Departure airport code for the third segment (required if seg2_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg2_to",
+                        "in": "query",
+                        "description": "Arrival airport code for the third segment (required if seg2_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg3_date",
+                        "in": "query",
+                        "description": "Date of departure for the fourth segment (required if seg3_from or seg3_to are provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "seg3_from",
+                        "in": "query",
+                        "description": "Departure airport code for the fourth segment (required if seg3_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg3_to",
+                        "in": "query",
+                        "description": "Arrival airport code for the fourth segment (required if seg3_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg4_date",
+                        "in": "query",
+                        "description": "Date of departure for the fifth segment (required if seg4_from or seg4_to are provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "seg4_from",
+                        "in": "query",
+                        "description": "Departure airport code for the fifth segment (required if seg4_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "seg4_to",
+                        "in": "query",
+                        "description": "Arrival airport code for the fifth segment (required if seg4_date is provided)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    }
+}

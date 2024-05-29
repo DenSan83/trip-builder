@@ -8,8 +8,139 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+
+/**
+ * @OA\Info(
+ *     title="Trip Builder",
+ *     version="1.0.0",
+ *     description="Documentation of the API",
+ * )
+ */
 class TripController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/search",
+     *     summary="Search trips",
+     *     description="Endpoint to search for trips. If a date parameter for an additional segment (e.g., seg2_date) is provided, all parameters for that segment (seg2_date, seg2_from, seg2_to) are required.",
+     *    @OA\Parameter(
+     *          name="type",
+     *          in="query",
+     *          description="Type of trip",
+     *          required=true,
+     *          @OA\Schema(type="string", enum={"oneway", "roundtrip", "multicity", "openjaws"})
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg0_date",
+     *         in="query",
+     *         description="Date of departure for the first segment",
+     *         required=true,
+     *         @OA\Schema(type="string", format="date")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg0_from",
+     *         in="query",
+     *         description="Departure airport code for the first segment",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg0_to",
+     *         in="query",
+     *         description="Arrival airport code for the first segment",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg1_date",
+     *         in="query",
+     *         description="Date of departure for the second segment",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg1_from",
+     *         in="query",
+     *         description="Departure airport code for the second segment",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg1_to",
+     *         in="query",
+     *         description="Arrival airport code for the second segment",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg2_date",
+     *         in="query",
+     *         description="Date of departure for the third segment (required if seg2_from or seg2_to are provided)",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg2_from",
+     *         in="query",
+     *         description="Departure airport code for the third segment (required if seg2_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg2_to",
+     *         in="query",
+     *         description="Arrival airport code for the third segment (required if seg2_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg3_date",
+     *         in="query",
+     *         description="Date of departure for the fourth segment (required if seg3_from or seg3_to are provided)",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg3_from",
+     *         in="query",
+     *         description="Departure airport code for the fourth segment (required if seg3_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg3_to",
+     *         in="query",
+     *         description="Arrival airport code for the fourth segment (required if seg3_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg4_date",
+     *         in="query",
+     *         description="Date of departure for the fifth segment (required if seg4_from or seg4_to are provided)",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg4_from",
+     *         in="query",
+     *         description="Departure airport code for the fifth segment (required if seg4_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="seg4_to",
+     *         in="query",
+     *         description="Arrival airport code for the fifth segment (required if seg4_date is provided)",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     )
+     * )
+     */
     public function tripBuilder(Request $request)
     {
         $typeParam = $request->query('type');

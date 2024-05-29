@@ -12,6 +12,17 @@ class AirlineController extends Controller
         return Airline::where('code', $airline)->exists();
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/airlines",
+     *     summary="Fetch list of airlines",
+     *     description="Endpoint to fetch the list of airlines",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *      )
+     * )
+     */
     public function fetchList()
     {
         $airlines = Airline::select('code', 'name')->get();
