@@ -1,66 +1,174 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Trip Builder
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project was build for **FlightHub Group**. It is a API web service to build and navigate trips for a single passenger 
+using criteria such as departure locations, departure dates and arrival locations.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+.   **[Features](#features)** .
+    **[Technical Requirements](#technical-requirements)** .
+    **[Build](#build)** .
+    **[Usage](#usage)** .
+    **[Customize](#customize)** .
+    **[Documentation](#documentation)** .
+    **[Areas for Improvement](#areas-for-improvement)** .
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### Flight and Airport Management
+- Easily manage flight, airline, and airport information.
+- Search flights just by editing the url.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### API Documentation with Swagger
+- Automatic API documentation using Laravel Swagger.
+- Easily explore API endpoints and test them directly from the Swagger interface.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Easy Customization
+- Designed with Laravel, allowing easy customization and extension.
+- Leverage Laravel's capabilities to develop new features quickly.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Automated Testing
+- Complete suite of automated tests to ensure code quality.
+- Uses PHPUnit for unit testing.
 
-## Laravel Sponsors
+### Scalability and Performance
+- Designed to scale easily as the number of airlines, airports or flights grow.
+- Optimization of database queries and caching for optimal performance.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Technical Requirements
+- Create Web Services to build and navigate trips for a single passenger using criteria such as
+  departure locations, departure dates and arrival locations.
+- A trip references one or many flights with dates of departure.
+- Server-side application MUST be written in PHP.
+- The resulting project MUST be version-controlled and hosted online.
+- Easy to follow instructions MUST be provided to provision an environment , install and run
+  the application locally.
+- The following trip types MUST be supported: one-way, round-trip.
 
-### Premium Partners
+### Extra considerations
+- The application is deployed online to ease the review process: https://tripbuilder.devdensan.com
+- The application scales beyond sample data (given on the PDF).
+- The application uses data storage provisioned within the environment.
+- The application implements automated software tests.
+- The application documents Web Services (using Swagger).
+- The application allows flights to be restricted to a preferred airline.
+- The application supports open-jaw trips and multi-city trips.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Technologies
 
-## Contributing
+- PHP v8.2
+- Laravel 11.0
+- Composer v2.7.2
+- Swagger v8.6
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Build
 
-## Code of Conduct
+Pre required:
+- PHP v8.2 or higher (check by doing `php -v`).
+- Composer v2.2.0 or higher (`composer update` should suffice).
+- MySQL or MariaDB database locally installed.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. First, clone this repo on your folder:
 
-## Security Vulnerabilities
+```shell
+git clone https://github.com/DenSan83/trip-builder.git
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Next, install your PHP dependencies on the trip-builder folder
+```shell
+cd trip-builder
+composer install
+```
+3. Make sure php artisan has a safe generated key
+```shell
+   php artisan key:generate
+```
 
-## License
+4. Copy and edit the .env file to connect the app to your database
+```shell
+   cp .env.example .env
+   nano .env
+```
+5. Then, open a CLI, create and populate your database with the tables needed and some examples from the seeders
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell
+php artisan migrate && php artisan db:seed
+```
+- You will find some entries for Airlines, Airports and Flights on your database.
+- Check out the [Customize](#customize) section to modify the files to suit your needs.
+
+6. in a local environment, you will need to create a local server
+```shell
+php artisan serve
+```
+
+## Usage
+
+You can list all entries of Airlines, Airports and Flights from your database with a GET request
+```http
+GET /api/airlines
+GET /api/airports
+GET /api/flights
+```
+
+Flights can be filtered by airline by adding an *airline* parameter
+```http
+GET /api/flights?airline=AC
+```
+
+### Trip Builder
+In order to build a trip, you can chain up to 5 flights in a request. Every request has three parts: a flight date, a 
+departure airport and an arrival airport. A request also needs a type (Ex: oneway, round-trip). You can also filter 
+flights by an airline, by using the optional parameter `airline`
+
+*Example 1:*
+```http
+GET /search?seg0_date=2024-06-28&seg0_from=YUL&seg0_to=YVR&type=oneway
+```
+In this example:
+- `seg0_date`: Specifies the departure date for the trip segment. The earliest date can be tomorrow and the latest 
+date can be one year from today. Date must be in format YYYY-MM-DD.
+- `seg0_from`: Specifies the departure location using a IATA airport code from the database.
+- `seg0_to`: Specifies the arrival location using a IATA airport code from the database.
+- `type`: Specifies the type of trip. It can be one of these: oneway, roundtrip, openjaws or multicity.
+If we add more flights to this trip, `seg0` will need to be replaced by `seg1`, `seg2`, etc.
+
+*Example 2:*
+```http
+GET /search?seg0_date=2024-06-28&seg0_from=LHR&seg0_to=CDG&seg1_date=2024-07-09&seg1_from=CDG&seg1_to=AMS&seg2_date=2024-07-12&seg2_from=AMS&seg2_to=YYZ&type=multicity
+```
+
+In this example, our trip has:
+- A first flight: from LHR (London) to CDG (Paris) on 2024-06-28
+- A second flight: from CDG (Paris) to AMS (Amsterdam) on 2024-07-09
+- A third flight: from AMS (Amsterdam) to YYZ (Toronto) on 2024-07-12
+- A type: multicity
+
+You can find more information on the documentation of the API *(website root: '/')*.
+
+Try these examples:
+- Filter flights by airline: https://tripbuilder.devdensan.com/api/flights?airline=AC 
+- Round trip: https://tripbuilder.devdensan.com/search?seg0_date=2024-06-15&seg0_from=SYD&seg0_to=YYZ&seg1_date=2024-06-30&seg1_from=YYZ&seg1_to=SYD&type=roundtrip
+- Multi-city trip: https://tripbuilder.devdensan.com/search?seg0_date=2024-06-28&seg0_from=LHR&seg0_to=CDG&seg1_date=2024-06-09&seg1_from=CDG&seg1_to=AMS&seg2_date=2024-06-12&seg2_from=AMS&seg2_to=YYZ&type=multicity
+
+## Customize
+
+- If you would like to add more trip types, please modify `app/Enums/TripType.php`.
+- To add more Airlines, modify `database/seeders/AirlineSeeders.php` before the 5th step of the  [build](#build) section.
+- To add more Airports, modify `database/seeders/AirportSeeders.php` before the 5th step of the  [build](#build) section.
+- To add more Flights, modify `database/seeders/FlightSeeders.php` before the 5th step of the  [build](#build) section.
+
+## Documentation
+
+- PHP versions: [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
+- Composer: [https://getcomposer.org/doc/](https://getcomposer.org/doc/)
+- Swagger: [https://swagger.io/docs/](https://swagger.io/docs/)
+
+## Areas for Improvement
+
+- Sort trip listings
+- Paginate trip listings
+- Allow flights departing and/or arriving in the vicinity of requested locations
+- Fill seeds from another API
