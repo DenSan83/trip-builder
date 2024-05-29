@@ -133,6 +133,7 @@ date can be one year from today. Date must be in format YYYY-MM-DD.
 - `seg0_from`: Specifies the departure location using a IATA airport code from the database.
 - `seg0_to`: Specifies the arrival location using a IATA airport code from the database.
 - `type`: Specifies the type of trip. It can be one of these: oneway, roundtrip, openjaws or multicity.
+
 If we add more flights to this trip, `seg0` will need to be replaced by `seg1`, `seg2`, etc.
 
 *Example 2:*
