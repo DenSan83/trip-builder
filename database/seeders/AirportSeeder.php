@@ -200,7 +200,7 @@ class AirportSeeder extends Seeder
                 'region_code' => 'QC',
                 'latitude' => 45.457714,
                 'longitude' => -73.749908,
-                'timezone' => 'America/Toronto'
+                'timezone' => 'America/Montreal'
             ],
             [
                 'code' => 'YVR',
