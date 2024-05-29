@@ -27,7 +27,7 @@ class AirlineController extends Controller
     {
         $airlines = Airline::select('code', 'name')->get();
 
-        return response()->json($airlines);
+        return response()->json(['airlines' => $airlines]);
     }
 
     public function getAirline(string $airline)

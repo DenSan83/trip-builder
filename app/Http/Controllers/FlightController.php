@@ -60,7 +60,9 @@ class FlightController extends Controller
         if ($airline) {
             $query->where('airline', $airline);
         }
-        return $query->get();
+        $flights = $query->get();
+
+        return response()->json(['flights' => $flights]);
     }
 
 }

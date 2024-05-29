@@ -43,7 +43,7 @@ class AirportController extends Controller
             'timezone'
         )->get();
 
-        return response()->json($airports);
+        return response()->json(['airports' => $airports]);
     }
 
     public function getAirport(string $airport)

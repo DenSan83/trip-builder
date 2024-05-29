@@ -252,7 +252,7 @@ class TripController extends Controller
 
         if (!empty($errors)) $json['errors'] = $errors;
 
-        return response()->json([$json]);
+        return response()->json(['search' => $json]);
     }
 
 
