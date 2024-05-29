@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class FlightController extends Controller
 {
@@ -47,6 +48,10 @@ class FlightController extends Controller
      */
     public function fetchList(Request $request)
     {
+        if (Cache::has('flights_list')) {
+            return Cache::get('flights_list');
+        }
+
         $airline = $request->query('airline');
         $query = Flight::select(
             'airline',
@@ -61,6 +66,7 @@ class FlightController extends Controller
             $query->where('airline', $airline);
         }
         $flights = $query->get();
+        Cache::put('flights_list', $flights, 60 * 60 * 24); // 1 day cache
 
         return response()->json(['flights' => $flights]);
     }

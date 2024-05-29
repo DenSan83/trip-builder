@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Airport;
+use Illuminate\Support\Facades\Cache;
 
 class AirportController extends Controller
 {
@@ -31,6 +32,10 @@ class AirportController extends Controller
      */
     public function fetchList()
     {
+        if (Cache::has('airports_list')) {
+            return Cache::get('airports_list');
+        }
+
         $airports = Airport::select(
             'code',
             'city_code',
@@ -42,6 +47,7 @@ class AirportController extends Controller
             'longitude',
             'timezone'
         )->get();
+        Cache::put('airports_list', $airports, 60 * 60 * 24); // 1 day cache
 
         return response()->json(['airports' => $airports]);
     }

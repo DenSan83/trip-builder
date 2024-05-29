@@ -6,6 +6,7 @@ use App\Enums\TripType;
 use App\Models\Flight;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -143,6 +144,12 @@ class TripController extends Controller
      */
     public function tripBuilder(Request $request)
     {
+        // Check cache first
+        $cacheKey = 'trip_builder_' . md5(json_encode($request->all()));
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
         $typeParam = $request->query('type');
         $airlineParam = $request->query('airline');
 
@@ -251,6 +258,8 @@ class TripController extends Controller
         ];
 
         if (!empty($errors)) $json['errors'] = $errors;
+
+        Cache::put($cacheKey, $json, 60 * 60); // 1 hour cache
 
         return response()->json(['search' => $json]);
     }
