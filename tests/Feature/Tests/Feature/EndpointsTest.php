@@ -30,7 +30,7 @@ class EndpointsTest extends TestCase
         // Assert
         $response->assertStatus(200)
             ->assertJsonCount(1)
-            ->assertJson([
+            ->assertJson([ 'search' =>
                 [
                     'airlines' => [
                         ['code' => 'BA', 'name' => 'British Airways'],
@@ -78,7 +78,9 @@ class EndpointsTest extends TestCase
         // Assert
         $response->assertStatus(200)
             ->assertJsonStructure([
-                '*' => ['code', 'name']
+                'airlines' => [
+                    '*' => ['code', 'name']
+                ]
             ]);
     }
 
@@ -95,7 +97,9 @@ class EndpointsTest extends TestCase
         // Assert
         $response->assertStatus(200)
             ->assertJsonStructure([
-                '*' => ['code', 'city_code', 'name', 'city', 'country_code']
+                'airports' => [
+                    '*' => ['code', 'city_code', 'name', 'city', 'country_code']
+                ]
             ]);
     }
 
@@ -112,7 +116,9 @@ class EndpointsTest extends TestCase
         // Assert
         $response->assertStatus(200)
             ->assertJsonStructure([
-                '*' => ['airline', 'number', 'departure_airport', 'departure_time', 'arrival_airport', 'arrival_time', 'price']
+                'flights' => [
+                    '*' => ['airline', 'number', 'departure_airport', 'departure_time', 'arrival_airport', 'arrival_time', 'price']
+                ]
             ]);
     }
 
