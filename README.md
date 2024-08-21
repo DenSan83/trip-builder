@@ -48,7 +48,7 @@ using criteria such as departure locations, departure dates and arrival location
 - The following trip types MUST be supported: one-way, round-trip.
 
 ### Extra considerations
-- The application is deployed online to ease the review process: https://tripbuilder.devdensan.com
+- The application is deployed online to ease the review process: https://trip-builder.devdensan.com
 - The application scales beyond sample data (given on the PDF).
 - The application uses data storage provisioned within the environment.
 - The application implements automated software tests.
@@ -150,9 +150,9 @@ In this example, our trip has:
 You can find more information on the documentation of the API *(website root: '/')*.
 
 Try these examples:
-- Filter flights by airline: https://tripbuilder.devdensan.com/api/flights?airline=AC 
-- Round trip: https://tripbuilder.devdensan.com/search?seg0_date=2024-06-15&seg0_from=SYD&seg0_to=YYZ&seg1_date=2024-06-30&seg1_from=YYZ&seg1_to=SYD&type=roundtrip
-- Multi-city trip: https://tripbuilder.devdensan.com/search?seg0_date=2024-06-28&seg0_from=LHR&seg0_to=CDG&seg1_date=2024-06-09&seg1_from=CDG&seg1_to=AMS&seg2_date=2024-06-12&seg2_from=AMS&seg2_to=YYZ&type=multicity
+- Filter flights by airline: https://trip-builder.devdensan.com/api/flights?airline=AC 
+- Round trip: https://trip-builder.devdensan.com/search?seg0_date=2024-06-15&seg0_from=SYD&seg0_to=YYZ&seg1_date=2024-06-30&seg1_from=YYZ&seg1_to=SYD&type=roundtrip
+- Multi-city trip: https://trip-builder.devdensan.com/search?seg0_date=2024-06-28&seg0_from=LHR&seg0_to=CDG&seg1_date=2024-06-09&seg1_from=CDG&seg1_to=AMS&seg2_date=2024-06-12&seg2_from=AMS&seg2_to=YYZ&type=multicity
 
 ## Customize
 
